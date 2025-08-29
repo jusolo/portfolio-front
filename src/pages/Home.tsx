@@ -4,14 +4,24 @@ import { Navbar } from "@/components/navbar";
 import { Section } from "@/components/section";
 import { ProjectCard } from "@/components/project-card";
 import { projects } from "@/data/projects";
+import { motion } from "framer-motion";
 
 export function Home() {
+  const container = {
+    hidden: {},
+    show: { transition: { staggerChildren: 0.05, delayChildren: 0.02 } },
+  };
+  const item = {
+    hidden: { opacity: 0, y: 10 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.35 } },
+  };
+
   return (
     <div className="min-h-dvh">
       <Navbar />
 
       {/* HERO */}
-      <section className="container mx-auto px-4 pt-16 pb-10">
+      <section className="container mx-auto px-4 pt-16 pb-10 min-h-[100svh] md:min-h-[100dvh] flex items-center">
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div>
             <p className="text-sm text-muted-foreground">
@@ -51,7 +61,13 @@ export function Home() {
 
       {/* SKILLS */}
       <Section id="skills" title="Skills">
-        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 text-sm">
+        <motion.ul
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 text-sm"
+        >
           {[
             "TypeScript",
             "React",
@@ -62,23 +78,39 @@ export function Home() {
             "JWT",
             "PostgreSQL",
           ].map((s) => (
-            <li
+            <motion.li
               key={s}
+              variants={item}
+              whileHover={{ y: -2 }}
               className="rounded-xl border px-3 py-2 text-center bg-muted/40"
             >
               {s}
-            </li>
+            </motion.li>
           ))}
-        </ul>
+        </motion.ul>
       </Section>
 
       {/* PROYECTOS */}
       <Section id="projects" title="Proyectos">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
           {projects.map((p) => (
-            <ProjectCard key={p.id} project={p} />
+            <motion.div
+              key={p.id}
+              variants={item}
+              whileHover={{ y: -4, scale: 1.01 }}
+              transition={{ type: "spring", stiffness: 300, damping: 22 }}
+              className="will-change-transform"
+            >
+              <ProjectCard project={p} />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </Section>
 
       {/* CONTACTO */}
