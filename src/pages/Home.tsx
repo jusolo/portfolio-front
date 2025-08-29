@@ -20,11 +20,6 @@ export function Home() {
             <h1 className="text-3xl md:text-5xl font-semibold tracking-tight mt-2">
               Juan Sebastián Ospina Losada
             </h1>
-            <p className="mt-4 text-muted-foreground">
-              Diseño software y desarrollo web con enfoque en claridad,
-              rendimiento y escalabilidad. 24 años, construyendo productos que
-              resuelven problemas reales.
-            </p>
             <div className="mt-6 flex gap-3">
               <a href="#projects">
                 <Button>Ver proyectos</Button>
