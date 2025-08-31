@@ -160,8 +160,7 @@ body {
 
 @font-face {
   font-family: "CinzelVar";
-  src: url("/fonts/Cinzel/Cinzel-VariableFont_wght.woff2") format("woff2"),
-       url("/fonts/Cinzel/Cinzel-VariableFont_wght.ttf") format("truetype");
+  src: url("/fonts/Cinzel/Cinzel-VariableFont_wght.ttf") format("truetype");
   font-weight: 200 900;
   font-display: swap;
 }
