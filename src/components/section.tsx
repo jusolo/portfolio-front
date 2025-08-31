@@ -1,5 +1,6 @@
 import type { PropsWithChildren } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { MagicDivider } from "./magic-divider";
 
 type SectionProps = PropsWithChildren<{
   id?: string;
@@ -26,11 +27,13 @@ export function Section({ id, title, className, children }: SectionProps) {
           initial={reduce ? undefined : "hidden"}
           whileInView={reduce ? undefined : "show"}
           viewport={{ once: true, amount: 0.2 }}
-          className="text-2xl md:text-3xl font-semibold tracking-tight mb-6"
+          className="hp-title text-2xl md:text-3xl font-semibold tracking-tight mb-6"
         >
           {title}
         </motion.h2>
       ) : null}
+
+      <MagicDivider className="mb-6" />
 
       <motion.div
         variants={reduce ? undefined : fadeUp(0.05)}

@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Navbar } from "@/components/navbar";
 import { Section } from "@/components/section";
 import { ProjectCard } from "@/components/project-card";
@@ -21,29 +20,44 @@ export function Home() {
       <Navbar />
 
       {/* HERO */}
-      <section className="container mx-auto px-4 pt-16 pb-10 min-h-[100svh] md:min-h-[100dvh] flex items-center">
-        <div className="grid md:grid-cols-2 gap-8 items-center">
+      <section
+        className="relative min-h-[100svh] flex items-center overflow-hidden"
+        style={{ backgroundImage: "url(/img/hp-hero.jpg)" }}
+      >
+        {/* capa de fondo */}
+        <div
+          className="absolute inset-0 bg-center bg-cover"
+          style={{ backgroundImage: "url(/img/hp-hero.jpg)" }}
+          aria-hidden
+        />
+
+        {/* degradé encima para que el texto se lea */}
+        <div
+          className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/30 to-background"
+          aria-hidden
+        />
+
+        {/* contenido */}
+        <div className="relative z-10 container mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
           <div>
             <p className="text-sm text-muted-foreground">
               Ingeniero de software
             </p>
-            <h1 className="text-3xl md:text-5xl font-semibold tracking-tight mt-2">
+            <h1 className="hp-title text-3xl md:text-5xl mt-2">
               Juan Sebastián Ospina Losada
             </h1>
+            <p className="mt-4 text-muted-foreground max-w-xl">
+              Diseño software y desarrollo web con enfoque en claridad,
+              rendimiento y escalabilidad.
+            </p>
             <div className="mt-6 flex gap-3">
               <a href="#projects">
-                <Button>Ver proyectos</Button>
+                <Button className="btn-spell">Ver proyectos</Button>
               </a>
               <a href="#contact">
                 <Button variant="outline">Contacto</Button>
               </a>
             </div>
-          </div>
-
-          <div className="flex md:justify-end">
-            <Avatar className="h-28 w-28 border">
-              <AvatarFallback>JO</AvatarFallback>
-            </Avatar>
           </div>
         </div>
       </section>

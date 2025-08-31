@@ -19,7 +19,7 @@ export interface Project {
 
 export function ProjectCard({ project }: { project: Project }) {
   return (
-    <Card className="h-full">
+    <Card className="h-full perchment">
       <CardHeader>
         <CardTitle className="flex items-center justify-between gap-2">
           <span>{project.title}</span>

@@ -43,71 +43,98 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+
+  /* Parchment light */
+  --background: oklch(0.96 0.02 90);
+  --foreground: oklch(0.18 0.03 50);
+
+  --card: oklch(0.98 0.01 95);
+  --card-foreground: var(--foreground);
+
+  --popover: var(--card);
+  --popover-foreground: var(--card-foreground);
+
+  /* Dorado sobrio */
+  --primary: oklch(0.78 0.12 85);
+  --primary-foreground: oklch(0.98 0.01 95);
+
+  /* Grises cálidos para fondos secundarios */
+  --secondary: oklch(0.94 0.02 90);
+  --secondary-foreground: var(--foreground);
+
+  --muted: oklch(0.94 0.02 90);
+  --muted-foreground: oklch(0.45 0.03 50);
+
+  /* Toque esmeralda contenido */
+  --accent: oklch(0.72 0.10 165);
+  --accent-foreground: oklch(0.98 0.01 95);
+
+  --destructive: oklch(0.62 0.18 25);
+  --border: oklch(0.88 0.01 90);
+  --input: oklch(0.90 0.01 90);
+  --ring: var(--primary);
+
+  /* Charts (opcional) */
+  --chart-1: oklch(0.68 0.15 40);
+  --chart-2: oklch(0.64 0.10 185);
+  --chart-3: oklch(0.45 0.08 230);
+  --chart-4: oklch(0.82 0.16 85);
+  --chart-5: oklch(0.76 0.16 70);
+
+  /* Sidebar (si lo usas) */
+  --sidebar: var(--card);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--accent-foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  /* Castillo a medianoche */
+  --background: oklch(0.16 0.03 255);
+  --foreground: oklch(0.92 0.02 100);
+
+  --card: oklch(0.20 0.03 255);
+  --card-foreground: var(--foreground);
+
+  --popover: var(--card);
+  --popover-foreground: var(--card-foreground);
+
+  /* Dorado algo más vivo para contraste */
+  --primary: oklch(0.82 0.14 85);
+  --primary-foreground: oklch(0.14 0.02 255);
+
+  --secondary: oklch(0.23 0.02 255);
+  --secondary-foreground: var(--foreground);
+
+  --muted: oklch(0.22 0.02 255);
+  --muted-foreground: oklch(0.74 0.02 100);
+
+  --accent: oklch(0.62 0.10 165);
+  --accent-foreground: oklch(0.14 0.02 255);
+
+  --destructive: oklch(0.70 0.18 22);
+  --border: oklch(0.32 0.02 255 / 0.9);
+  --input: oklch(0.26 0.02 255 / 0.9);
+  --ring: oklch(0.70 0.03 255);
+
+  --chart-1: oklch(0.52 0.22 265);
+  --chart-2: oklch(0.70 0.17 162);
+  --chart-3: oklch(0.76 0.18 70);
+  --chart-4: oklch(0.60 0.23 305);
+  --chart-5: oklch(0.64 0.22 16);
+
+  --sidebar: var(--card);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--accent-foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
 }
 
 @layer base {
@@ -130,3 +157,45 @@ body {
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 }
+
+@font-face {
+  font-family: "CinzelVar";
+  src: url("/fonts/Cinzel/Cinzel-VariableFont_wght.woff2") format("woff2"),
+       url("/fonts/Cinzel/Cinzel-VariableFont_wght.ttf") format("truetype");
+  font-weight: 200 900;
+  font-display: swap;
+}
+.hp-title { font-family: CinzelVar, ui-serif, Georgia, serif; letter-spacing: 0.02em; }
+
+/* Sutileza: granulado mínimo para “papel” (solo light) */
+@media (prefers-reduced-transparency: no-preference) {
+  .papery {
+    background-image:
+      radial-gradient(1200px 400px at 10% -10%, color-mix(in oklch, var(--primary) 8%, transparent), transparent 60%),
+      radial-gradient(1000px 380px at 110% -20%, color-mix(in oklch, var(--accent) 8%, transparent), transparent 65%),
+      radial-gradient(2px 2px at 20% 30%, oklch(0.45 0.03 80 / 0.06) 1px, transparent 1px);
+    background-size: auto, auto, 24px 24px;
+  }
+}
+
+.parchment {
+  @apply bg-card border rounded-xl shadow-sm;
+  box-shadow:
+    0 1px 0 0 hsl(var(--border)/0.8) inset,
+    0 8px 24px -12px hsl(var(--foreground)/0.15);
+}
+
+.btn-spell {
+  position: relative;
+  isolation: isolate;
+}
+.btn-spell::after {
+  content: "";
+  position: absolute; inset: -1px;
+  border-radius: inherit;
+  background: radial-gradient(120px 60px at 30% 0%, hsl(var(--primary)/0.4), transparent 70%),
+              radial-gradient(120px 60px at 70% 100%, hsl(var(--accent)/0.35), transparent 70%);
+  opacity: 0; transition: opacity .25s ease;
+  z-index: -1;
+}
+.btn-spell:hover::after { opacity: .9; }

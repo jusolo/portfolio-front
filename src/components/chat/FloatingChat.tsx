@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useRef, useState } from "react";
-import { MessageCircle, X, Send, Bot, User } from "lucide-react";
+import { MessageCircle, X, Send, WandSparkles, User } from "lucide-react";
+// import { SortingHatIcon } from "@/components/icons/sorting-hat";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -231,7 +232,7 @@ function Bubble({
           )}
           aria-hidden
         >
-          {isSystem ? <X className="h-4 w-4" /> : <Bot className="h-4 w-4" />}
+          {isSystem ? <X className="h-4 w-4" /> : <WandSparkles className="h-4 w-4" />}
         </div>
       )}
       <div
