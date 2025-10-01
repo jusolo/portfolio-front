@@ -4,6 +4,8 @@ import { Section } from "@/components/section";
 import { ProjectCard } from "@/components/project-card";
 import { projects } from "@/data/projects";
 import { motion } from "framer-motion";
+import Particles from "@/components/particles";
+import SplashCursor from "@/components/splashCursor";
 
 export function Home() {
   const container = {
@@ -17,8 +19,8 @@ export function Home() {
 
   return (
     <div className="min-h-dvh">
+      <SplashCursor />;
       <Navbar />
-
       {/* HERO */}
       <section
         className="relative min-h-[100svh] flex items-center overflow-hidden"
@@ -31,9 +33,23 @@ export function Home() {
           aria-hidden
         />
 
+        {/* capa de partículas */}
+        <div className="absolute inset-0 z-[1]">
+          <Particles
+            particleColors={["#ffffff", "#ffffff"]}
+            particleCount={200}
+            particleSpread={10}
+            speed={0.1}
+            particleBaseSize={100}
+            moveParticlesOnHover={true}
+            alphaParticles={true}
+            disableRotation={false}
+          />
+        </div>
+
         {/* degradé encima para que el texto se lea */}
         <div
-          className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/30 to-background"
+          className="absolute inset-0 z-[2] bg-gradient-to-b from-background/70 via-background/30 to-background"
           aria-hidden
         />
 
@@ -61,7 +77,6 @@ export function Home() {
           </div>
         </div>
       </section>
-
       {/* SOBRE MI */}
       <Section id="about" title="Sobre mí">
         <p className="max-w-3xl text-muted-foreground">
@@ -72,7 +87,6 @@ export function Home() {
           equipos que cuidan el detalle.
         </p>
       </Section>
-
       {/* SKILLS */}
       <Section id="skills" title="Skills">
         <motion.ul
@@ -96,14 +110,13 @@ export function Home() {
               key={s}
               variants={item}
               whileHover={{ y: -2 }}
-              className="rounded-xl border px-3 py-2 text-center bg-muted/40"
+              className="rounded-xl border px-3 py-2 text-center bg-muted/40 hover:border-amber-400/60 hover:shadow-[0_0_8px_rgba(251,191,36,0.3)] transition-all duration-300"
             >
               {s}
             </motion.li>
           ))}
         </motion.ul>
       </Section>
-
       {/* PROYECTOS */}
       <Section id="projects" title="Proyectos">
         <motion.div
@@ -119,14 +132,13 @@ export function Home() {
               variants={item}
               whileHover={{ y: -4, scale: 1.01 }}
               transition={{ type: "spring", stiffness: 300, damping: 22 }}
-              className="will-change-transform"
+              className="will-change-transform hover:[&>*]:border-amber-400/60 hover:[&>*]:shadow-[0_0_12px_rgba(251,191,36,0.4)] [&>*]:transition-all [&>*]:duration-300"
             >
               <ProjectCard project={p} />
             </motion.div>
           ))}
         </motion.div>
       </Section>
-
       {/* CONTACTO */}
       <Section id="contact" title="Contacto">
         <div className="max-w-xl">
@@ -139,7 +151,6 @@ export function Home() {
           </a>
         </div>
       </Section>
-
       {/* FOOTER */}
       <footer className="border-t py-8 mt-10">
         <div className="container mx-auto px-4 text-sm text-muted-foreground">
