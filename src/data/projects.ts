@@ -3,19 +3,19 @@ import type { Project } from "@/components/project-card";
 export const projects: Project[] = [
   {
     id: "p1",
-    title: "Dashboard UNP",
-    description: "Panel modular con autenticación, roles y consumo de APIs.",
-    tech: ["Angular", "NestJS", "Tailwind", "JWT"],
-    link: "#",
+    title: "Rivly",
+    description: "Aplicación movil de retos entre usuarios.",
+    tech: ["React native", "Expo", "Better auth", "Postgresql"],
+    link: "https://challengers-landing.vercel.app",
     repo: "#",
   },
   {
     id: "p2",
-    title: "E-commerce Minimal",
-    description:
-      "Checkout con Wompi, carrito persistente y catálogo filtrable.",
-    tech: ["React", "TypeScript", "Wompi", "Cloudinary"],
-    link: "#",
+    title: "E-commerce Minimal (Comedy Tickets)",
+    description: "Plataforma de venta de tickets para shows de comedia en Colombia con autenticación de usuarios, carrito de compras persistente y procesamiento de pagos mediante Stripe.",
+    tech: ["React", "TypeScript", "NextJS", "Stripe", "Better Auth"],
+    link: "https://tickets-eta-beryl.vercel.app",
+    repo: "https://github.com/jusolo/tickets"
   },
   {
     id: "p3",
