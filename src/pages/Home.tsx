@@ -2,12 +2,27 @@ import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/navbar";
 import { Section } from "@/components/section";
 import { ProjectCard } from "@/components/project-card";
-import { projects } from "@/data/projects";
 import { motion } from "framer-motion";
 import Particles from "@/components/particles";
 import SplashCursor from "@/components/splashCursor";
+import { useEffect, useState } from "react";
+import { getProjects, getSkills } from "@/lib/api";
 
 export function Home() {
+  const [projects, setProjects] = useState<any[]>([]);
+  const [skills, setSkills] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    Promise.all([getProjects(), getSkills()])
+      .then(([projectsData, skillsData]) => {
+        setProjects(projectsData.filter((p: any) => p.featured));
+        setSkills(skillsData);
+      })
+      .catch((err) => console.error("Error loading data:", err))
+      .finally(() => setLoading(false));
+  }, []);
+
   const container = {
     hidden: {},
     show: { transition: { staggerChildren: 0.05, delayChildren: 0.02 } },
@@ -90,55 +105,54 @@ export function Home() {
         </Section>
         {/* SKILLS */}
         <Section id="skills" title="Skills">
-          <motion.ul
-            variants={container}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.2 }}
-            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 text-sm"
-          >
-            {[
-              "TypeScript",
-              "React",
-              "Angular",
-              "NestJS",
-              "FastAPI",
-              "TailwindCSS",
-              "JWT",
-              "PostgreSQL",
-            ].map((s) => (
-              <motion.li
-                key={s}
-                variants={item}
-                whileHover={{ y: -2 }}
-                className="rounded-xl border px-3 py-2 text-center bg-muted/40 hover:border-amber-400/60 hover:shadow-[0_0_8px_rgba(251,191,36,0.3)] transition-all duration-300"
-              >
-                {s}
-              </motion.li>
-            ))}
-          </motion.ul>
+          {loading ? (
+            <p className="text-muted-foreground">Cargando habilidades...</p>
+          ) : (
+            <motion.ul
+              variants={container}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 text-sm"
+            >
+              {skills.map((s) => (
+                <motion.li
+                  key={s.id}
+                  variants={item}
+                  whileHover={{ y: -2 }}
+                  className="rounded-xl border px-3 py-2 text-center bg-muted/40 hover:border-amber-400/60 hover:shadow-[0_0_8px_rgba(251,191,36,0.3)] transition-all duration-300"
+                >
+                  {s.name}
+                </motion.li>
+              ))}
+            </motion.ul>
+          )}
         </Section>
         {/* PROYECTOS */}
         <Section id="projects" title="Proyectos">
-          <motion.div
-            variants={container}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.2 }}
-            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            {projects.map((p) => (
-              <motion.div
-                key={p.id}
-                variants={item}
-                whileHover={{ y: -4, scale: 1.01 }}
-                transition={{ type: "spring", stiffness: 300, damping: 22 }}
-                className="will-change-transform hover:[&>*]:border-amber-400/60 hover:[&>*]:shadow-[0_0_12px_rgba(251,191,36,0.4)] [&>*]:transition-all [&>*]:duration-300"
-              >
-                <ProjectCard project={p} />
-              </motion.div>
-            ))}
-          </motion.div>
+          {loading ? (
+            <p className="text-muted-foreground">Cargando proyectos...</p>
+          ) : (
+            <motion.div
+              variants={container}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
+              className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            >
+              {projects.map((p) => (
+                <motion.div
+                  key={p.id}
+                  variants={item}
+                  whileHover={{ y: -4, scale: 1.01 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 22 }}
+                  className="will-change-transform hover:[&>*]:border-amber-400/60 hover:[&>*]:shadow-[0_0_12px_rgba(251,191,36,0.4)] [&>*]:transition-all [&>*]:duration-300"
+                >
+                  <ProjectCard project={p} />
+                </motion.div>
+              ))}
+            </motion.div>
+          )}
         </Section>
         {/* CONTACTO */}
         <Section id="contact" title="Contacto">
