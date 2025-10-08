@@ -12,9 +12,14 @@ export interface Project {
   id: string;
   title: string;
   description: string;
-  tech: string[];
-  link?: string;
-  repo?: string;
+  longDesc?: string;
+  technologies: string[];
+  github?: string;
+  demo?: string;
+  image?: string;
+  startDate?: string;
+  endDate?: string;
+  featured: boolean;
 }
 
 export function ProjectCard({ project }: { project: Project }) {
@@ -23,9 +28,9 @@ export function ProjectCard({ project }: { project: Project }) {
       <CardHeader>
         <CardTitle className="flex items-center justify-between gap-2">
           <span>{project.title}</span>
-          {project.link && (
+          {project.demo && (
             <a
-              href={project.link}
+              href={project.demo}
               target="_blank"
               rel="noreferrer"
               className="text-muted-foreground hover:text-foreground"
@@ -38,7 +43,7 @@ export function ProjectCard({ project }: { project: Project }) {
         <CardDescription>{project.description}</CardDescription>
       </CardHeader>
       <CardContent className="flex flex-wrap gap-2">
-        {project.tech.map((t) => (
+        {project.technologies.map((t) => (
           <Badge key={t} variant="secondary">
             {t}
           </Badge>
