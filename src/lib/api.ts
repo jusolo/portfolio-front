@@ -15,26 +15,26 @@ export async function askIA(question: string): Promise<string> {
   return data?.answer ?? "";
 }
 
-export async function getProjects() {
-  const res = await fetch(`${API_URL}/project`);
-  if (!res.ok) throw new Error(`Error fetching projects: ${res.status}`);
-  return res.json();
-}
+// export async function getProjects() {
+//   const res = await fetch(`${API_URL}/project`);
+//   if (!res.ok) throw new Error(`Error fetching projects: ${res.status}`);
+//   return res.json();
+// }
 
-export async function getSkills() {
-  const res = await fetch(`${API_URL}/skill`);
-  if (!res.ok) throw new Error(`Error fetching skills: ${res.status}`);
-  return res.json();
-}
+// export async function getSkills() {
+//   const res = await fetch(`${API_URL}/skill`);
+//   if (!res.ok) throw new Error(`Error fetching skills: ${res.status}`);
+//   return res.json();
+// }
 
-export async function getExperiences() {
-  const res = await fetch(`${API_URL}/experience`);
-  if (!res.ok) throw new Error(`Error fetching experiences: ${res.status}`);
-  return res.json();
-}
+// export async function getExperiences() {
+//   const res = await fetch(`${API_URL}/experience`);
+//   if (!res.ok) throw new Error(`Error fetching experiences: ${res.status}`);
+//   return res.json();
+// }
 
-export async function getEducation() {
-  const res = await fetch(`${API_URL}/education`);
-  if (!res.ok) throw new Error(`Error fetching education: ${res.status}`);
-  return res.json();
-}
+// export async function getEducation() {
+//   const res = await fetch(`${API_URL}/education`);
+//   if (!res.ok) throw new Error(`Error fetching education: ${res.status}`);
+//   return res.json();
+// }
