@@ -6,7 +6,7 @@ import { ModeToggle } from "@/components/mode-toggle";
 
 const links = [
   { href: "#about", label: "Sobre mí" },
-  { href: "#skills", label: "Skills" },
+  { href: "#skills", label: "Habilidades" },
   { href: "#projects", label: "Proyectos" },
   { href: "#contact", label: "Contacto" },
 ];

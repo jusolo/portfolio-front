@@ -23,21 +23,13 @@ export interface Project {
 }
 
 export function ProjectCard({ project }: { project: Project }) {
-  return (
-    <Card className="h-full perchment">
+  const content = (
+    <Card className="h-full perchment cursor-pointer">
       <CardHeader>
         <CardTitle className="flex items-center justify-between gap-2">
           <span>{project.title}</span>
           {project.demo && (
-            <a
-              href={project.demo}
-              target="_blank"
-              rel="noreferrer"
-              className="text-muted-foreground hover:text-foreground"
-              aria-label="Ver proyecto"
-            >
-              <ExternalLink className="h-4 w-4" />
-            </a>
+            <ExternalLink className="h-4 w-4 text-muted-foreground" />
           )}
         </CardTitle>
         <CardDescription>{project.description}</CardDescription>
@@ -51,4 +43,20 @@ export function ProjectCard({ project }: { project: Project }) {
       </CardContent>
     </Card>
   );
+
+  if (project.demo) {
+    return (
+      <a
+        href={project.demo}
+        target="_blank"
+        rel="noreferrer"
+        className="block h-full"
+        aria-label={`Ver proyecto ${project.title}`}
+      >
+        {content}
+      </a>
+    );
+  }
+
+  return content;
 }
