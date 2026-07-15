@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, Github, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -13,9 +13,25 @@ const links = [
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-background/80 border-b">
+    <header
+      className="sticky top-0 z-50 transition-[background-color,border-color,box-shadow] duration-300"
+      style={{
+        backgroundColor: scrolled ? "color-mix(in oklch, var(--background) 82%, transparent)" : "transparent",
+        backdropFilter: scrolled ? "blur(16px)" : "none",
+        WebkitBackdropFilter: scrolled ? "blur(16px)" : "none",
+        borderBottom: scrolled ? "1px solid oklch(0.78 0.12 85 / 0.25)" : "1px solid transparent",
+        boxShadow: scrolled ? "0 4px 24px -8px oklch(0.16 0.03 255 / 0.5)" : "none",
+      }}
+    >
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         <a href="#" className="font-semibold tracking-tight">
           Juan Ospina

@@ -184,9 +184,16 @@ body {
     0 8px 24px -12px hsl(var(--foreground)/0.15);
 }
 
+/* Custom easing curves */
+:root {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
 .btn-spell {
   position: relative;
   isolation: isolate;
+  transition: transform 160ms var(--ease-out);
 }
 .btn-spell::after {
   content: "";
@@ -194,7 +201,137 @@ body {
   border-radius: inherit;
   background: radial-gradient(120px 60px at 30% 0%, hsl(var(--primary)/0.4), transparent 70%),
               radial-gradient(120px 60px at 70% 100%, hsl(var(--accent)/0.35), transparent 70%);
-  opacity: 0; transition: opacity .25s ease;
+  opacity: 0;
+  transition: opacity 220ms ease;
   z-index: -1;
 }
-.btn-spell:hover::after { opacity: .9; }
+@media (hover: hover) and (pointer: fine) {
+  .btn-spell:hover::after { opacity: .9; }
+}
+.btn-spell:active { transform: scale(0.97); }
+
+/* Skill chips — specific transitions, no transition-all */
+.skill-chip {
+  transition:
+    border-color 200ms var(--ease-out),
+    box-shadow 200ms var(--ease-out),
+    background-color 200ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .skill-chip:hover {
+    border-color: rgba(251, 191, 36, 0.6);
+    box-shadow: 0 0 8px rgba(251, 191, 36, 0.3);
+  }
+}
+
+/* Grimoire skill cards */
+.grimoire-card {
+  position: relative;
+  border-radius: 0.875rem;
+  border: 1px solid oklch(0.78 0.12 85 / 0.22);
+  background: color-mix(in oklch, var(--card) 85%, transparent);
+  padding: 1.25rem 1rem 1.25rem;
+  backdrop-filter: blur(8px);
+  transition:
+    border-color 240ms var(--ease-out),
+    box-shadow 240ms var(--ease-out),
+    transform 200ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .grimoire-card:hover {
+    border-color: oklch(0.78 0.12 85 / 0.65);
+    box-shadow:
+      0 0 0 1px oklch(0.78 0.12 85 / 0.15),
+      0 0 24px -4px oklch(0.78 0.12 85 / 0.35),
+      0 8px 32px -8px oklch(0.16 0.03 255 / 0.4);
+    transform: translateY(-3px);
+  }
+}
+/* parchment top ornament */
+.grimoire-ornament {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+.grimoire-ornament span {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    oklch(0.78 0.12 85 / 0.4),
+    transparent
+  );
+}
+
+/* Typewriter cursor */
+.typewriter-cursor {
+  display: inline-block;
+  width: 2px;
+  margin-left: 1px;
+  animation: blink 0.9s step-end infinite;
+  color: oklch(0.78 0.12 85);
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Project cards */
+.project-card {
+  transition:
+    border-color 220ms var(--ease-out),
+    box-shadow 220ms var(--ease-out),
+    transform 200ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .project-card:hover {
+    border-color: oklch(0.78 0.12 85 / 0.55);
+    box-shadow:
+      0 0 0 1px oklch(0.78 0.12 85 / 0.12),
+      0 0 20px -4px oklch(0.78 0.12 85 / 0.3),
+      0 8px 24px -8px oklch(0.16 0.03 255 / 0.4);
+    transform: translateY(-3px);
+  }
+}
+
+.project-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  border: 1px solid transparent;
+  color: oklch(var(--muted-foreground));
+  transition:
+    color 160ms var(--ease-out),
+    border-color 160ms var(--ease-out),
+    background-color 160ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .project-icon-btn:hover {
+    color: oklch(0.78 0.12 85);
+    border-color: oklch(0.78 0.12 85 / 0.4);
+    background-color: oklch(0.78 0.12 85 / 0.08);
+  }
+}
+
+/* Contact constellation dots */
+.contact-constellation {
+  background-image:
+    radial-gradient(1px 1px at 15% 25%, oklch(0.78 0.12 85 / 0.35) 1px, transparent 0),
+    radial-gradient(1px 1px at 42% 60%, oklch(0.78 0.12 85 / 0.25) 1px, transparent 0),
+    radial-gradient(1px 1px at 68% 20%, oklch(0.78 0.12 85 / 0.3) 1px, transparent 0),
+    radial-gradient(1px 1px at 85% 75%, oklch(0.78 0.12 85 / 0.2) 1px, transparent 0),
+    radial-gradient(1px 1px at 30% 80%, oklch(0.78 0.12 85 / 0.25) 1px, transparent 0),
+    radial-gradient(1px 1px at 75% 45%, oklch(0.78 0.12 85 / 0.3) 1px, transparent 0),
+    radial-gradient(1.5px 1.5px at 55% 88%, oklch(0.78 0.12 85 / 0.2) 1px, transparent 0),
+    radial-gradient(1px 1px at 92% 35%, oklch(0.78 0.12 85 / 0.28) 1px, transparent 0);
+  background-size: 100% 100%;
+}
+
+.project-card-wrapper {
+  transition: transform 200ms var(--ease-out);
+}
