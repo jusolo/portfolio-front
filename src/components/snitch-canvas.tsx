@@ -16,7 +16,7 @@ export function SnitchCanvas() {
     let frameId: number;
     let initialized = false;
 
-    function init(vw: number, vh: number) {
+    function init(vw: number, vh: number, mount: HTMLDivElement) {
       if (initialized) return;
       initialized = true;
 
@@ -103,14 +103,6 @@ export function SnitchCanvas() {
       // Color palette matching the real snitch: golden amber
       const memColor = 0xc8840a;
       const spineColor = 0x9a6008;
-      const memMat = new THREE.MeshPhongMaterial({
-        color: memColor,
-        specular: 0xffd060,
-        shininess: 40,
-        transparent: true,
-        opacity: 0.82,
-        side: THREE.DoubleSide,
-      });
       const spineMat = new THREE.MeshPhongMaterial({
         color: spineColor,
         specular: 0xffcc44,
@@ -183,7 +175,6 @@ export function SnitchCanvas() {
 
       // ── AI state — idle / dart ─────────────────────────────────
       const pos = new THREE.Vector2(0, 0.3); // current position in world XY
-      const vel = new THREE.Vector2(0, 0);   // velocity (for dart)
       const target = new THREE.Vector2(0, 0);
 
       // Safe wander bounds (leave margin so snitch stays on screen)
@@ -323,7 +314,7 @@ export function SnitchCanvas() {
     // fall back to screen dimensions or mount's rendered size.
     const w = window.innerWidth || mount.offsetWidth || screen.width || 1280;
     const h = window.innerHeight || mount.offsetHeight || screen.height || 800;
-    init(w, h);
+    init(w, h, mount);
 
     return () => {
       const cleanup = (mount as any).__cleanup;
